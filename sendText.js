@@ -1,10 +1,27 @@
 (async () => {
   try {
     const googleLogin = require('./googleLogin');
-    const { browser, page } = await googleLogin();
+    const {browser, page } = await googleLogin();
     require('dotenv').config();
 
     console.log('Now in sendText module');
+    await page.goto('https://voice.google.com');
+    await new Promise(r => setTimeout(r, 5500))
+    console.log('Now inside Voice and accepting alets popup ');
+    
+    // Tab 3 times to reach the "Send a message" field
+    for(let i=0; i<3; i++){
+        await page.keyboard.press('Tab');
+      }
+    await new Promise(r => setTimeout(r, 5500));
+   
+   
+    // press Enter to accept alerts in broswer notifications    
+    await page.keyboard.press('Enter');
+    await new Promise(r => setTimeout(r, 5500));
+
+    console.log('you are now Logged in to Account @voice.google.com');
+    
 
     // Navigate to Google Voice messages
     await page.goto('https://voice.google.com/u/0/messages', { waitUntil: 'networkidle2' });
