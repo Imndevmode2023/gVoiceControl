@@ -1,5 +1,5 @@
 .env
 test.js
 voiceControl.js
-
-.env
+node_modules
+dot.env
