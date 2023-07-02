@@ -1,4 +1,4 @@
-# voiceControl
+# gVoiceControl
 "G"+"oo"+"gle"\ Voice Text Sender
 This is a Node.js project that automates sending text messages through "G"+"oo"+"gle" Voice. It uses Puppeteer, a Node library that provides a high-level API to control Chrome or Chromium over the DevTools Protocol.
 
