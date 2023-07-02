@@ -1,4 +1,4 @@
-(async () => {
+const sendText = async () => {
   try {
     const googleLogin = require('./googleLogin');
     const {browser, page } = await googleLogin();
@@ -6,32 +6,18 @@
 
     console.log('Now in sendText module');
     await page.goto('https://voice.google.com');
-    await new Promise(r => setTimeout(r, 5500))
-    console.log('Now inside Voice and accepting alets popup ');
+    await new Promise(r => setTimeout(r, 1500))
+    console.log('Now inside Google Voice! ');
     
-    // Tab 3 times to reach the "Send a message" field
-    for(let i=0; i<3; i++){
-        await page.keyboard.press('Tab');
-      }
-    await new Promise(r => setTimeout(r, 5500));
-   
-   
-    // press Enter to accept alerts in broswer notifications    
-    await page.keyboard.press('Enter');
-    await new Promise(r => setTimeout(r, 5500));
-
+ 
     console.log('you are now Logged in to Account @voice.google.com');
     
 
     // Navigate to Google Voice messages
     await page.goto('https://voice.google.com/u/0/messages', { waitUntil: 'networkidle2' });
 
- //   console.log('now accepting notifications....');
-    // Tab 3 time to accept alerts
- //   for (let i = 0; i < 3; i++)
-   //   await page.keyboard.press('Tab');
 
-    console.log(' Press Enter to open the "Send a message" box')
+    console.log(' Pressing [Enter] to open the "Send a message" box')
     //await page.keyboard.press('Enter');
     const phoneNumber = process.env.PHONE_NUMBER;
 
@@ -50,14 +36,14 @@
 
     // Click on the "Send a message" field
     await page.click("#messaging-view > div > md-content > div > div > div > div.gmat-subhead-2");
-await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 2000));
     // Type the phone number 
     await page.keyboard.type(phoneNumber);
 
     // Press Enter to move to the text field
     await page.keyboard.press('Enter');
     await new Promise(r => setTimeout(r, 1000));
-    // Tab 10 times to reach the "Send a message" field
+    // Tab 4 times to reach the "Send a message" field
     for(let i=0; i<4; i++){
      await page.keyboard.press('Tab');
     }
@@ -96,4 +82,6 @@ await new Promise(r => setTimeout(r, 2000));
     console.error(err);
   }
   browser.close();
-})();
+};
+
+module.exports = sendText;

@@ -4,7 +4,7 @@ require('dotenv').config();
 
 puppeteerExtra.use(StealthPlugin());
 
-const googleLogin = async () => {
+    const googleLogin = async () => {
     const browser = await puppeteerExtra.launch({ headless: false});
     const page = await browser.newPage();
     
