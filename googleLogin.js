@@ -5,8 +5,9 @@ require('dotenv').config();
 puppeteerExtra.use(StealthPlugin());
 
     const googleLogin = async () => {
-    const browser = await puppeteerExtra.launch({ headless: false});
+    const browser = await puppeteerExtra.launch({ headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox', '--incognito'] });
     const page = await browser.newPage();
+    
     
     console.log('browser started gr8 work!')
     await page.goto('https://accounts.google.com/signin/v2/identifier');

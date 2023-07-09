@@ -72,7 +72,7 @@ const sendText = async () => {
       console.log('Sent a text message: ', chunk);
 
       // Wait for a while between each text
-      await page.waitForTimeout(1000);
+      await page.waitForTimeout(1750);
       
     }
 
